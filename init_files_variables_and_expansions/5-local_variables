@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "$(printenv)\n$(set > /tmp/a\nprintenv > /tmp/e\nsort /tmp/a /tmp/a /tmp/e | uniq -u)\n$(declare -f)"
+eval $'set -o posix\nset' | grep -Ev '^(BASH_EXECUTION_STRING|BASH_ARGV|BASH_ARGC|BASH_LINENO|BASH_SOURCE|BASH_REMATCH|BASH_CMDS|PIPESTATUS|FUNCNAME)='
