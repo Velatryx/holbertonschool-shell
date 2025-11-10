@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "$env\n$(comm -23 /tmp/all /tmp/env)\n$(declare -f)"
