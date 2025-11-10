@@ -1,0 +1,8 @@
+#!/bin/bash
+#Comment
+var="Best School"
+count=1
+while [ $count -le 10 ]; do
+    echo "$var"
+    ((count++))
+done
