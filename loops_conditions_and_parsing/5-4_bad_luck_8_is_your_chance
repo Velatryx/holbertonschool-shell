@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Loop:
+count=1
+var="Best School"
+while [ $count -le 10 ]; do  
+    if [ $count -eq 4 ]; then
+        echo "bad luck"
+    elif [ $count -eq 8 ]; then
+	echo "good luck"
+    else 
+	echo "$var"
+    fi
+    ((count++))
+done
