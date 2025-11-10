@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash/env bash
 #Comment
 var="Best School"
 count=1
