@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$env\n$(comm -23 /tmp/all /tmp/env)\n$(declare -f)"
+set | awk -F= '/^[A-Za-z_][A-Za-z0-9_]*=/{a[$1]} END{while(("printenv"|getline))e[$1];for(i in a)if(!(i in e))print i "\n" $(declare -f)}'
