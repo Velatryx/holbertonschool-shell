@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Until loop
+count=1
+var="Best School"
+until [ $count -gt 10 ]; do   #gt --> until the condition is true --> where count is 11.
+    echo "$var"
+    ((count++))  
+done
