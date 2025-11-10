@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "=== ENV ===\n$(printenv)\n=== LOCAL ===\n$(set > /tmp/a; printenv > /tmp/e; sort /tmp/a /tmp/a /tmp/e | uniq -u)\n=== FUNCTIONS ===\n$(declare -f)"
+echo -e "$(printenv)\n$(set > /tmp/a\nprintenv > /tmp/e\nsort /tmp/a /tmp/a /tmp/e | uniq -u)\n$(declare -f)"
