@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Comment for this task
 for file in *; do
-    [[ -f "$file" && "$file" != .* && "$file" == *-* ]] || continue #if it is a file, it is not hidden (doesnt start with .), and if it has at least one -, then continue iterating, then remove the prefix until first dash (-). file=app-config.json file#*- --> config.json.
+    [[ -f "$file" && "$file" != .* && "$file" == *-* && "$file" != "${0##*/}" ]] || continue #if it is a file, it is not hidden (doesnt start with .), and if it has at least one -, then continue iterating, then remove the prefix until first dash (-). file=app-config.json file#*- --> config.json.
     printf '%s\n' "${file#*-}"
 done
