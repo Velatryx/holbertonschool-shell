@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
 #Comment
-# This script iterates over all non-hidden entries in the current directory.
-# It uses a case statement to reliably check if the name contains a dash,
-# and prints the portion of the name AFTER the first dash.
+shopt -s nullglob
 
 for file in *; do
-    case "$file" in
-        # Pattern: Matches any string that contains at least one dash
-        *-*) 
-            # If matched, remove the prefix up to the first dash and print.
-            printf '%s\n' "${file#*-}"
-            ;;
-        # Default: If no dash is found, do nothing (continue)
-        *)
-            ;;
-    esac
+    printf '%s\n' "${file#*-}"
 done
