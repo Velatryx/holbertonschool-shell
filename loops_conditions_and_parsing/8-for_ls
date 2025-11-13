@@ -6,10 +6,9 @@
 
 for file in *; do
     # 1. Filter Check:
-    # "$file" == *-*: Ensures the entry's name contains at least one dash.
     # The check for regular files (-f) has been removed to improve compatibility
     # in restrictive execution environments, as requested by the test failure.
-    [[ "$file" == *-* ]] || continue 
+    [[ "$file" == *-* && "$file" != "${0##*/}" ]] || continue 
 
     # 2. Parameter Expansion:
     # ${file#*-} extracts the suffix after the first dash.
