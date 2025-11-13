@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Loop of clock
+hours=0
+minutes=0
+
+echo "Hour: $hours"
+
+while true; do
+    ((minutes++))
+
+    if [ "$minutes" -ge 60 ]; then
+        ((hours++))
+        ((minutes=0))
+        echo "Hour: $hours"
+    elif [ "$minutes" -eq 59 ] && [ "$hours" -eq 12 ]; then
+        break
+    else
+        echo "$minutes"
+    fi
+done
