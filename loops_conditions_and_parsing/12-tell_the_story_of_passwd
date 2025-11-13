@@ -2,5 +2,5 @@
 #The gang
 
 while IFS=: read -r USERNAME PASSWORD USER GROUP_ID INFO HOME_DIRECTORY COMMANDSHELL; do
-      echo "The user "$USERNAME" is part of the "$GROUP_ID" gang, lives in "$HOME_DIRECTORY" and rides "$COMMANDSHELL". "$USER"'s place is protected by the passcode "$PASSWORD", more info about the user here: "$USER" "$INFO""
+      echo "The user $USERNAME is part of the $GROUP_ID gang, lives in $HOME_DIRECTORY and rides $COMMANDSHELL. $USER's place is protected by the passcode $PASSWORD, more info about the user here: $USERNAME $INFO"
 done < /etc/passwd
