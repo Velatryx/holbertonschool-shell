@@ -1,6 +1,11 @@
-#!/usr/bin/env bash
-#The story of the gang
+#!/bin/bash
+# Read /etc/passwd line by line
+while IFS=: read -r username password uid gid full_name home shell; do
+    # If the full_name field is empty, set it to the username
+    if [ -z "$full_name" ]; then
+        full_name="$username"
+    fi
 
-while IFS=: read -r USERNAME PASSWORD USER_ID GROUP_ID INFO HOME_DIR COMMAND_SHELL; do
-    echo "The user \"$USERNAME\" is part of the \"$GROUP_ID\" gang, lives in \"$HOME_DIR\" and rides \"$COMMAND_SHELL\". \"$USER_ID\"'s place is protected by the passcode \"$PASSWORD\", more info about the user here: \"$INFO\""
+    # Print the story for this user
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $password, more info about the user here: $full_name"
 done < /etc/passwd
