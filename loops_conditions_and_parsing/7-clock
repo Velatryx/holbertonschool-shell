@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Loop of clock
+#Clock loop
 hours=0
 minutes=0
 
@@ -10,11 +10,19 @@ while true; do
 
     if [ "$minutes" -ge 60 ]; then
         ((hours++))
-        ((minutes=0))
+        ((minutes = 0))
         echo "Hour: $hours"
-    elif [ "$minutes" -eq 59 ] && [ "$hours" -eq 12 ]; then
-        break
     else
         echo "$minutes"
+    fi
+
+    # Break AFTER printing 12:59
+    if [ "$hours" -eq 12 ] && [ "$minutes" -eq 59 ]; then
+        break
+    fi
+
+    # Prevent going to hour 13
+    if [ "$hours" -ge 13 ]; then
+        break
     fi
 done
