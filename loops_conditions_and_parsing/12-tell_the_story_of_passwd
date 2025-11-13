@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Read /etc/passwd line by line
 while IFS=: read -r username password uid gid full_name home shell; do
     # If the full_name field is empty, set it to the username
