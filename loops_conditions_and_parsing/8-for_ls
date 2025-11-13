@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
-#Hello
-# This script iterates over all non-hidden entries (files, directories, etc.) 
-# in the current directory. It only proceeds if the entry contains at least one dash (-).
-# If a dash is found, it prints the portion of the name AFTER the first dash.
+#Comment
+# This script iterates over all non-hidden entries in the current directory.
+# It uses a case statement to reliably check if the name contains a dash,
+# and prints the portion of the name AFTER the first dash.
 
 for file in *; do
-    # 1. Filter Check:
-    # The check for regular files (-f) has been removed to improve compatibility
-    # in restrictive execution environments, as requested by the test failure.
-    [[ "$file" == *-* && "$file" != "${0##*/}" ]] || continue 
-
-    # 2. Parameter Expansion:
-    # ${file#*-} extracts the suffix after the first dash.
-    suffix="${file#*-}"
-
-    # 3. Display Result
-    printf '%s\n' "$suffix"
+    case "$file" in
+        # Pattern: Matches any string that contains at least one dash
+        *-*) 
+            # If matched, remove the prefix up to the first dash and print.
+            printf '%s\n' "${file#*-}"
+            ;;
+        # Default: If no dash is found, do nothing (continue)
+        *)
+            ;;
+    esac
 done
