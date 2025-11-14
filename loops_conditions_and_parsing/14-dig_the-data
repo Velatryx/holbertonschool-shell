@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Occurance_Number, IP, Status Codes
+
+awk '{print $10, $1, $9}' apache-access.log
