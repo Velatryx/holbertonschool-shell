@@ -1,15 +1,46 @@
 #!/usr/bin/env bash
 #What?
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -f /var/run/myscript.pid; exit 0' SIGQUIT SIGTERM
-pgrep 10-process_and_pid_file > /var/run/myscript.pid
-chmod 777 /var/run/myscript.pid
-chmod +t /var/run
-chmod +t /var
-while true; do 
-     echo "To infinity and beyond"
-     sleep 2     
+#!/usr/bin/env bash
+# Simple signal-handling script with PID file
+
+PIDFILE="/var/run/myscript.pid"
+
+# Write our own PID to the pidfile
+echo "$$" > "$PIDFILE"
+
+# Handle SIGTERM: complain, clean up, exit
+handle_sigterm() {
+    echo "I hate the kill command"
+    rm -f "$PIDFILE"
+    exit 0
+}
+
+# Handle SIGINT: just complain, keep running
+handle_sigint() {
+    echo "Y U no love me?!"
+}
+
+# Handle SIGQUIT: clean up, exit
+handle_sigquit() {
+    rm -f "$PIDFILE"
+    exit 0
+}
+
+trap handle_sigterm TERM
+trap handle_sigint INT
+trap handle_sigquit QUIT
+
+# Infinite loop
+while :; do
+    echo "To infinity and beyond"
+    sleep 2
 done
 
-     
+#pgrep 10-process_and_pid_file > /var/run/myscript.pid
+#chmod 777 /var/run/myscript.pid
+#chmod +t /var/run
+#chmod +t /var
+#while true; do
+#     echo #To infinity and beyond"
+#     sleep 2
+#done
